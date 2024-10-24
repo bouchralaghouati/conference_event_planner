@@ -28,7 +28,7 @@ export const avSlice = createSlice({
         quantity: 0,
     },
     {
-        img: "",
+        img: "https://media.istockphoto.com/id/172323484/photo/blank-sign-on-blue.jpg?s=612x612&w=0&k=20&c=gMjuy_FgmWUM5lSIakmX35vuopaU9dJU-FByNbF4CfA=",
         name: "Signage",
         cost: 80,
         quantity: 0,
@@ -39,10 +39,16 @@ export const avSlice = createSlice({
 
   reducers: {
     incrementAvQuantity: (state, action) => {
-      
+        const item = state[action.payload];
+        if (item) {
+            item.quantity++;
+        }
     },
     decrementAvQuantity: (state, action) => {
-     
+        const item = state[action.payload];
+        if (item && item.quantity > 0) {
+            item.quantity--;
+        }
     },
   },
 });
