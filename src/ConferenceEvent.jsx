@@ -152,6 +152,7 @@ const ConferenceEvent = () => {
         av: avTotalCost,
         meals: mealsTotalCost,
     };  
+    const total_amount = totalCosts.venue + totalCosts.av + totalCosts.meals;
     return (
         <>
             <navbar className="navbar_event_conference">
@@ -294,14 +295,20 @@ const ConferenceEvent = () => {
                                     ))}
                                 </div>
                                 <div className="total_cost">Total Cost: {mealsTotalCost}</div>
-
+                                <div className="render_items">
+                                    <ItemsDisplay />
+                                </div>
 
                             </div>
                         </div>
                     ) : (
                         <div className="total_amount_detail">
                             <TotalCost totalCosts={totalCosts} handleClick={handleToggleItems} ItemsDisplay={() => <ItemsDisplay items={items} />} />
+                            <h2 id="pre_fee_cost_display" className="price">
+                                ${total_amount}
+                            </h2>
                         </div>
+                        
                     )
                 }
 
